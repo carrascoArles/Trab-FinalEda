@@ -1,7 +1,7 @@
 public class ResultArchivo {
     private boolean[] result;
 
-    public ResultChecker(int n) {
+    public ResultArchivo(int n) {
         this.result = new boolean[n];
     }
 
