@@ -16,4 +16,17 @@ public class Trie {
         }
         current.setEndOfWord(true);
     }
+
+    public boolean search(String word) {
+        TrieNode current = root;
+        for (char ch : word.toCharArray()) {
+            int index = ch - 'a';
+            TrieNode node = current.getChild(ch);
+            if (node == null) {
+                return false;
+            }
+            current = node;
+        }
+        return current.isEndOfWord();
+    }
 }
