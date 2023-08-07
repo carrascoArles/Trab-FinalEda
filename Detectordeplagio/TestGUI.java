@@ -119,7 +119,7 @@ public class TestGUI extends JFrame {
 		scrollPane_comparar_1.setBounds(10, 40, 749, 312);
         
 
-		JButton boton_comparar_1 = new JButton("Agregar texto a comparar");
+		JButton boton_comparar_1 = new JButton("Insertar texto a comparar");
 		boton_comparar_1.setBounds(10, 363, 749, 30);
 		boton_comparar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -144,7 +144,24 @@ public class TestGUI extends JFrame {
 		boton_comparar_3.setBounds(10, 445, 749, 60);
 		boton_comparar_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// realizar comparacion y redireccion a pestaña de resultados
+				
+                detector.loadFiles(textosBD);
+				ResultArchivo resultado = detector.verifyPlagiarism(textoAComparar);
+				
+			    boolean[] plagiarismResults = resultado.getResult();
+			    String[] fileNames = resultado.getFileNames();
+			    String[] plagiarismInfo = resultado.getPlagiarismInfo();
+			    String resAux = "";
+			    
+			    for (int i = 0; i < plagiarismResults.length; i++) {
+			    	resAux = resAux+fileNames[i]+" Estado: "+plagiarismInfo[i]+"\n";
+			    }
+			    System.out.println(resAux);
+			    
+			    label_resultados_2.setText(resAux);
+			    label_resultados_2.revalidate();
+			    
+				contentPane.setSelectedComponent(panel_resultados);	
 
 			}
 		});
