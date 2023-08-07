@@ -3,6 +3,8 @@ package Detectordeplagio;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -125,7 +127,7 @@ public class TestGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				textoAComparar = textArea_comparar_1.getText(); // actualizamos el texto a comparar
 				textArea_comparar_1.setText(""); // vaciamos el textArea
-				System.out.println(textoAComparar);
+				System.out.println("Texto actual a comparar: "+textoAComparar);
 			}
 		});
 		
@@ -154,13 +156,16 @@ public class TestGUI extends JFrame {
 			    String resAux = "";
 			    
 			    for (int i = 0; i < plagiarismResults.length; i++) {
-			    	resAux = resAux+fileNames[i]+" Estado: "+plagiarismInfo[i]+"\n";
+			    	
+			    	String colorHex = plagiarismResults[i] ? "#FF0000" : "#008000"; // Cambia el color segun si es plagio o no
+			    	
+			    	// Utilizando etiquetas html para asignar color
+			        String textoAColor = "<FONT COLOR='" + colorHex + "'>" + plagiarismInfo[i] + "</font><br>";
+
+			        resAux += fileNames[i] + " Estado: " + textoAColor;
 			    }
-			    System.out.println(resAux);
 			    
-			    label_resultados_2.setText(resAux);
-			    label_resultados_2.revalidate();
-			    
+			    label_resultados_2.setText("<html>" + resAux + "</html>");
 				contentPane.setSelectedComponent(panel_resultados);	
 
 			}
