@@ -40,4 +40,25 @@ public class Detector {
 
         return resultChecker;
     }
+    private boolean isTextPlagiarized(String[] wordsToCheck, List<String> fileWords) {
+        TrieNode current = trie.root;
+
+        for (String word : wordsToCheck) {
+            char[] wordChars = word.toCharArray();
+            for (char ch : wordChars) {
+                TrieNode node = current.getChild(ch);
+                if (node == null) {
+                    return false; // mo esta en el trie pipiipip
+                }
+                current = node;
+            }
+            // Verificar si la palabra está en la base de datos
+            if (!fileWords.contains(word)) {
+                return false; // returna false si la palabra que buscamos en el trie no se encuentra
+            }
+            // vuelve a empeza
+            current = trie.root;
+        }
+        return true;
+    }
 }
