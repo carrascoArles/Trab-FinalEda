@@ -18,6 +18,11 @@ public class TestGUI extends JFrame {
 
 	private JTabbedPane contentPane;
 
+    // variables para ejecucion
+	List<String> textosBD = new ArrayList<>();
+	Detector detector = new Detector();
+	String textoAComparar;
+
 	public static void main(String[] args) {
 		
 		try {
@@ -76,7 +81,9 @@ public class TestGUI extends JFrame {
 		boton_textos_1.setBounds(10, 363, 749, 30);
 		boton_textos_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// agrega el texto seleccionado y vacia el textArea
+				textosBD.add(textArea_textos_1.getText()); // añadimos un texto a nuestro arraylist
+				System.out.println(textosBD);
+				textArea_textos_1.setText(""); // vaciamos nuestro textArea
 			}
 		});
 		
@@ -88,14 +95,6 @@ public class TestGUI extends JFrame {
 		boton_textos_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Agrega Varios archivos
-			}
-		});
-		
-		JButton boton_textos_3 = new JButton("Comparar plagio");
-		boton_textos_3.setBounds(10, 445, 749, 60);
-		boton_textos_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// realizar comparacion y redireccion a pestaña de resultados		
 			}
 		});
         
@@ -124,7 +123,9 @@ public class TestGUI extends JFrame {
 		boton_comparar_1.setBounds(10, 363, 749, 30);
 		boton_comparar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// actualiza variable string que sera usada para comparar. y vacia el textArea
+				textoAComparar = textArea_comparar_1.getText(); // actualizamos el texto a comparar
+				textArea_comparar_1.setText(""); // vaciamos el textArea
+				System.out.println(textoAComparar);
 			}
 		});
 		
