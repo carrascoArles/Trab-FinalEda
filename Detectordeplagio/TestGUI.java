@@ -41,7 +41,7 @@ public class TestGUI extends JFrame {
 
 		setContentPane(contentPane);
 		
-        // panel resultados, aca se mostrara los resultados de la verificacion de plagio para cada texto ingresado
+        // panel resultados, aca se mostrara los resultados de la verificacion de plagio de nuestro texto con cada texto de la base de datos
 		JPanel panel_resultados = new JPanel();
 		panel_resultados.setLayout(null);
 
@@ -59,7 +59,7 @@ public class TestGUI extends JFrame {
 		panel_resultados.add(label_resultados_2);
 
         
-        // panel de textos, aca se introducira los diversos textos que seran evaluados por plagio
+       // panel de textos, aca se introducira los diversos textos que seran comparados con el texto a introducir en panel_comparar
         JPanel panel_textos = new JPanel();
 		panel_textos.setLayout(null);
 
@@ -105,9 +105,8 @@ public class TestGUI extends JFrame {
         panel_textos.add(boton_textos_1);
 		panel_textos.add(label_textos_2);
 		panel_textos.add(boton_textos_2);
-		panel_textos.add(boton_textos_3);
 
-        // panel comparar, aca se introducira el texto original con el cual se comparara los textos ingresados en el panel de textos
+        // panel comparar, aca se introducira el texto el cual se comparara con los textos o archivos ingresados en el panel de textos
         JPanel panel_comparar = new JPanel();
 		panel_comparar.setLayout(null);
 
@@ -159,8 +158,8 @@ public class TestGUI extends JFrame {
 
 		
         // añadiendo paneles a nuestro TabbedPane (contentPane)
-		contentPane.addTab("Textos", null, panel_textos, null);
-		contentPane.addTab("Comparar", null, panel_comparar, null);
+		contentPane.addTab("Textos BD", null, panel_textos, null);
+		contentPane.addTab("Comparar Texto", null, panel_comparar, null);
 		contentPane.addTab("Resultados", null, panel_resultados, null);
 		
 	}
