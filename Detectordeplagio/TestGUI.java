@@ -141,7 +141,7 @@ public class TestGUI extends JFrame {
 		boton_comparar_2.setBounds(390, 404, 369, 30);
 		boton_comparar_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// seleccionar un archivo, actualiza variable string que sera usada para comparar.
+				loadFiles();
 			}
 		});
 		
@@ -193,16 +193,18 @@ public class TestGUI extends JFrame {
 	private void loadFiles() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(true);
+		List<String> fileList = new ArrayList<>();
 
         int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             File[] selectedFiles = fileChooser.getSelectedFiles();
-            List<String> fileList = new ArrayList<>();
             for (File file : selectedFiles) {
                 System.out.println("Archivo seleccionado: " + file.getAbsolutePath());
 				fileList.add(fileToString(file));
             }
         }
+
+		detector.loadFiles(fileList);
     }
 
 	private String fileToString(File file) {
