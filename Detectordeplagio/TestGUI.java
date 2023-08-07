@@ -1,6 +1,9 @@
 package Detectordeplagio;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,6 +12,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
 
 public class TestGUI extends JFrame {
 
@@ -37,9 +41,11 @@ public class TestGUI extends JFrame {
 
 		setContentPane(contentPane);
 		
+        // panel resultados, aca se mostrara los resultados de la verificacion de plagio para cada texto ingresado
 		JPanel panel_resultados = new JPanel();
 		panel_resultados.setLayout(null);
 
+        // creando elementos para el panel de resultados
         JLabel label_resultados_1 = new JLabel("Resultados");
 		label_resultados_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_resultados_1.setBounds(320, 11, 120, 20);
@@ -52,9 +58,12 @@ public class TestGUI extends JFrame {
 		panel_resultados.add(label_resultados_1);
 		panel_resultados.add(label_resultados_2);
 
+        
+        // panel de textos, aca se introducira los diversos textos que seran evaluados por plagio
         JPanel panel_textos = new JPanel();
 		panel_textos.setLayout(null);
 
+        // creando elementos para el panel de textos
         JLabel label_textos_1 = new JLabel("Añadir textos");
 		label_textos_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_textos_1.setBounds(320, 11, 120, 20);
@@ -63,14 +72,49 @@ public class TestGUI extends JFrame {
 		JScrollPane scrollPane_textos_1 = new JScrollPane(textArea_textos_1); // Creando un scrollPane para nuestro textArea (textos grandes)
 		scrollPane_textos_1.setBounds(10, 40, 749, 312);
 
+        JButton boton_textos_1 = new JButton("Agregar texto");
+		boton_textos_1.setBounds(10, 363, 749, 30);
+		boton_textos_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// agrega el texto seleccionado y vacia el textArea
+			}
+		});
+		
+		JLabel label_textos_2 = new JLabel("¿Posee archivos de texto?");
+		label_textos_2.setBounds(210, 404, 170, 30);
+		
+		JButton boton_textos_2 = new JButton("Agregar archivos");
+		boton_textos_2.setBounds(390, 404, 369, 30);
+		boton_textos_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Agrega Varios archivos
+			}
+		});
+		
+		JButton boton_textos_3 = new JButton("Comparar plagio");
+		boton_textos_3.setBounds(10, 445, 749, 60);
+		boton_textos_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// realizar comparacion y redireccion a pestaña de resultados		
+			}
+		});
         
         // añadiendo elementos al panel de textos
 		panel_textos.add(label_textos_1);
 		panel_textos.add(scrollPane_textos_1);
+        panel_textos.add(boton_textos_1);
+		panel_textos.add(label_textos_2);
+		panel_textos.add(boton_textos_2);
+		panel_textos.add(boton_textos_3);
 
+        // panel comparar, aca se introducira el texto original con el cual se comparara los textos ingresados en el panel de textos
         JPanel panel_comparar = new JPanel();
 		panel_comparar.setLayout(null);
+
+        // creando elementos para el panel de comparar
+
 		
+        // añadiendo paneles a nuestro TabbedPane (contentPane)
 		contentPane.addTab("Textos", null, panel_textos, null);
 		contentPane.addTab("Comparar", null, panel_comparar, null);
 		contentPane.addTab("Resultados", null, panel_resultados, null);
