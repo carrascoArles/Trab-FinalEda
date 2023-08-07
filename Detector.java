@@ -18,4 +18,11 @@ public class Detector {
             database.add(fileWords);
         }
     }
+
+    private void insertWordsToTrie(String text) {
+        String[] words = text.toLowerCase().split("\\s+");
+        for (String word : words) {
+            trie.insert(word);
+        }
+    }
 }
