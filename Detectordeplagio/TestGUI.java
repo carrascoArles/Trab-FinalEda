@@ -40,6 +40,18 @@ public class TestGUI extends JFrame {
 		JPanel panel_resultados = new JPanel();
 		panel_resultados.setLayout(null);
 
+        JLabel label_resultados_1 = new JLabel("Resultados");
+		label_resultados_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_resultados_1.setBounds(320, 11, 120, 20);
+		
+		JLabel label_resultados_2 = new JLabel("Aqui se mostraran los resultados");
+		label_resultados_2.setBounds(10, 50, 749, 462);
+		label_resultados_2.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // añadiendo elementos al panel de resultados
+		panel_resultados.add(label_resultados_1);
+		panel_resultados.add(label_resultados_2);
+
         JPanel panel_textos = new JPanel();
 		panel_textos.setLayout(null);	
 
