@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class test {
+public class Test {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
        // Ejemplo de uso:

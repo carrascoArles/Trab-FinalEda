@@ -3,8 +3,10 @@ package Detectordeplagio;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 
 public class TestGUI extends JFrame {
 
@@ -96,7 +99,7 @@ public class TestGUI extends JFrame {
 		boton_textos_2.setBounds(390, 404, 369, 30);
 		boton_textos_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Agrega Varios archivos
+				loadFiles();
 			}
 		});
         
@@ -185,5 +188,36 @@ public class TestGUI extends JFrame {
 		contentPane.addTab("Comparar Texto", null, panel_comparar, null);
 		contentPane.addTab("Resultados", null, panel_resultados, null);
 		
+	}
+
+	private void loadFiles() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setMultiSelectionEnabled(true);
+
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File[] selectedFiles = fileChooser.getSelectedFiles();
+            List<String> fileList = new ArrayList<>();
+            for (File file : selectedFiles) {
+                System.out.println("Archivo seleccionado: " + file.getAbsolutePath());
+				fileList.add(fileToString(file));
+            }
+        }
+    }
+
+	private String fileToString(File file) {
+		String texto = "";
+		try {
+			Scanner scanner = new Scanner(file);
+			while (scanner.hasNextLine()) {
+				String linea = scanner.nextLine();
+				texto += linea;
+			}
+			scanner.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return texto;
 	}
 }
