@@ -85,32 +85,32 @@ public class TestGUI extends JFrame {
 		panel_textos.setLayout(null);
 
 		// creando elementos para el panel de textos
-		JLabel label_textos_1 = new JLabel("Añadir textos");
-		label_textos_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_textos_1.setBounds(320, 11, 120, 20);
+		// JLabel label_textos_1 = new JLabel("Añadir textos");
+		// label_textos_1.setHorizontalAlignment(SwingConstants.CENTER);
+		// label_textos_1.setBounds(320, 11, 120, 20);
 
-		JTextArea textArea_textos_1 = new JTextArea();
-		textArea_textos_1.setLineWrap(true);
-		textArea_textos_1.setWrapStyleWord(true);
-		JScrollPane scrollPane_textos_1 = new JScrollPane(textArea_textos_1); // Creando un scrollPane para nuestro
-																				// textArea (textos grandes)
-		scrollPane_textos_1.setBounds(10, 40, 749, 312);
+		// JTextArea textArea_textos_1 = new JTextArea();
+		// textArea_textos_1.setLineWrap(true);
+		// textArea_textos_1.setWrapStyleWord(true);
+		// JScrollPane scrollPane_textos_1 = new JScrollPane(textArea_textos_1); // Creando un scrollPane para nuestro
+		// 																		// textArea (textos grandes)
+		// scrollPane_textos_1.setBounds(10, 40, 749, 312);
 
-		JButton boton_textos_1 = new JButton("Agregar texto");
-		boton_textos_1.setBounds(10, 363, 749, 30);
-		boton_textos_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textosBD.add(textArea_textos_1.getText()); // añadimos un texto a nuestro arraylist
-				System.out.println(textosBD);
-				textArea_textos_1.setText(""); // vaciamos nuestro textArea
-			}
-		});
+		// JButton boton_textos_1 = new JButton("Agregar texto");
+		// boton_textos_1.setBounds(10, 363, 749, 30);
+		// boton_textos_1.addActionListener(new ActionListener() {
+		// 	public void actionPerformed(ActionEvent e) {
+		// 		textosBD.add(textArea_textos_1.getText()); // añadimos un texto a nuestro arraylist
+		// 		System.out.println(textosBD);
+		// 		textArea_textos_1.setText(""); // vaciamos nuestro textArea
+		// 	}
+		// });
 
 		JLabel label_textos_2 = new JLabel("¿Posee archivos de texto?");
-		label_textos_2.setBounds(210, 404, 170, 30);
+		label_textos_2.setBounds(100, 25, 170, 30);
 
 		JButton boton_textos_2 = new JButton("Agregar archivos");
-		boton_textos_2.setBounds(390, 404, 369, 30);
+		boton_textos_2.setBounds(390, 25, 369, 30);
 		boton_textos_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				loadFilesBD();
@@ -124,12 +124,12 @@ public class TestGUI extends JFrame {
 		textArea_textos_2.setWrapStyleWord(true);
 		JScrollPane scrollPane_textos_2 = new JScrollPane(textArea_textos_2); // Creando un scrollPane para nuestro
 																				// textArea (textos grandes)
-		scrollPane_textos_2.setBounds(10, 454, 749, 70);
+		scrollPane_textos_2.setBounds(10, 80, 749, 420);
 
 		// añadiendo elementos al panel de textos
-		panel_textos.add(label_textos_1);
-		panel_textos.add(scrollPane_textos_1);
-		panel_textos.add(boton_textos_1);
+		//panel_textos.add(label_textos_1);
+		// panel_textos.add(scrollPane_textos_1);
+		// panel_textos.add(boton_textos_1);
 		panel_textos.add(label_textos_2);
 		panel_textos.add(boton_textos_2);
 		panel_textos.add(scrollPane_textos_2);
@@ -242,14 +242,13 @@ public class TestGUI extends JFrame {
 				textosBD.add(fileToString(file));
 				BD.add(file);
 				numArchivosSubidos++;
-				nombreArchivosSubidos += " | " + file.getName();
+				nombreArchivosSubidos += "Archivo " + numArchivosSubidos + " => " + file.getName() + "\n";
 			}
-			nombreArchivosSubidos += " |";
+
+			textArea_textos_2.setText("Archivos subidos:\n" + nombreArchivosSubidos);
 
 			String mensaje = "Se subieron correctamente " + numArchivosSubidos + ":\n" + nombreArchivosSubidos;
 			JOptionPane.showMessageDialog(null, mensaje);
-
-			textArea_textos_2.setText("Archivos subidos:\n" + nombreArchivosSubidos);
 		}
 	}
 
