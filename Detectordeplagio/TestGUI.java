@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -27,6 +28,7 @@ public class TestGUI extends JFrame {
 	List<String> textosBD = new ArrayList<>();
 	Detector detector = new Detector();
 	String textoAComparar;
+	JTextArea textArea_textos_2;
 
 	public static void main(String[] args) {
 
@@ -104,12 +106,20 @@ public class TestGUI extends JFrame {
 			}
 		});
 
+		textArea_textos_2 = new JTextArea("Aqui se mostraran los archivos subidos");
+		textArea_textos_2.setEditable(false);
+		JScrollPane scrollPane_textos_2 = new JScrollPane(textArea_textos_2); // Creando un scrollPane para nuestro
+																				// textArea (textos grandes)
+		scrollPane_textos_2.setBounds(10, 454, 749, 70);
+
+
 		// añadiendo elementos al panel de textos
 		panel_textos.add(label_textos_1);
 		panel_textos.add(scrollPane_textos_1);
 		panel_textos.add(boton_textos_1);
 		panel_textos.add(label_textos_2);
 		panel_textos.add(boton_textos_2);
+		panel_textos.add(scrollPane_textos_2);
 
 		// panel comparar, aca se introducira el texto el cual se comparara con los
 		// textos o archivos ingresados en el panel de textos
@@ -161,7 +171,6 @@ public class TestGUI extends JFrame {
 				String resAux = "";
 
 				for (int i = 0; i < plagiarismResults.length; i++) {
-
 					String colorHex = plagiarismResults[i] ? "#FF0000" : "#008000"; // Cambia el color segun si es
 																					// plagio o no
 
@@ -210,10 +219,20 @@ public class TestGUI extends JFrame {
 		int result = fileChooser.showOpenDialog(null);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File[] selectedFiles = fileChooser.getSelectedFiles();
+			int numArchivosSubidos = 0;
+			String nombreArchivosSubidos = "";
 			for (File file : selectedFiles) {
 				System.out.println("Archivo seleccionado: " + file.getAbsolutePath());
 				textosBD.add(fileToString(file));
+				numArchivosSubidos++;
+				nombreArchivosSubidos += " | " + file.getName();
 			}
+			nombreArchivosSubidos += " |";
+
+			String mensaje = "Se subieron correctamente " + numArchivosSubidos + ":\n" + nombreArchivosSubidos;
+			JOptionPane.showMessageDialog(null, mensaje);
+
+			textArea_textos_2.setText("Archivos subidos:\n" + nombreArchivosSubidos);
 		}
 	}
 

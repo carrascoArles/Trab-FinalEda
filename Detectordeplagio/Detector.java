@@ -12,10 +12,12 @@ public class Detector {
     }
 
     public void loadFiles(List<String> files) {
+        database.clear();
+
         for (String fileContent : files) {
             insertWordsToTrie(fileContent);
             List<String> fileWords = new ArrayList<>();
-            String[] words = fileContent.toLowerCase().split("[\\s.:,;]+");
+            String[] words = fileContent.toLowerCase().split("[\\s.:,;0123456789]+");
             for (String word : words) {
                 fileWords.add(word);
             }
@@ -24,14 +26,14 @@ public class Detector {
     }
 
     private void insertWordsToTrie(String text) {
-        String[] words = text.toLowerCase().split("[\\s.:,;]+");
+        String[] words = text.toLowerCase().split("[\\s.:,;0123456789]+");
         for (String word : words) {
             trie.insert(word);
         }
     }
 
     public ResultArchivo verifyPlagiarism(String textToCheck) {
-        String[] wordsToCheck = textToCheck.toLowerCase().split("[\\s.:,;]+");
+        String[] wordsToCheck = textToCheck.toLowerCase().split("[\\s.:,;0123456789]+");
         int n = database.size();
         ResultArchivo resultChecker = new ResultArchivo(n);
 
