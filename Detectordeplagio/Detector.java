@@ -1,4 +1,5 @@
 package Detectordeplagio;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,20 +33,22 @@ public class Detector {
         }
     }
 
-    public ResultArchivo verifyPlagiarism(String textToCheck) {
+    public ResultArchivo verifyPlagiarism(String textToCheck, List<File> bd) {
         String[] wordsToCheck = textToCheck.toLowerCase().split("[\\s.:,;0123456789]+");
-        int n = database.size();
+        int n = bd.size();
         ResultArchivo resultChecker = new ResultArchivo(n);
 
         for (int i = 0; i < n; i++) {
             boolean isPlagiarized = isTextPlagiarized(wordsToCheck, database.get(i));
-            String fileName = "Archivo " + (i + 1);
+            String fileName = "Archivo " + bd.get(i).getName();
             String plagiarismInfo = isPlagiarized ? "Plagio detectado" : "Sin plagio";
             resultChecker.setResult(i, isPlagiarized, fileName, plagiarismInfo);
         }
 
         return resultChecker;
     }
+
+    
     private boolean isTextPlagiarized(String[] wordsToCheck, List<String> fileWords) {
         TrieNode current = trie.root;
 

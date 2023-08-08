@@ -25,6 +25,7 @@ public class TestGUI extends JFrame {
 	private JTabbedPane contentPane;
 
 	// variables para ejecucion
+	List<File> BD = new ArrayList<File>();
 	List<String> textosBD = new ArrayList<>();
 	Detector detector = new Detector();
 	String textoAComparar;
@@ -177,7 +178,7 @@ public class TestGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				detector.loadFiles(textosBD);
-				ResultArchivo resultado = detector.verifyPlagiarism(textoAComparar);
+				ResultArchivo resultado = detector.verifyPlagiarism(textoAComparar, BD);
 
 				boolean[] plagiarismResults = resultado.getResult();
 				String[] fileNames = resultado.getFileNames();
@@ -239,6 +240,7 @@ public class TestGUI extends JFrame {
 			for (File file : selectedFiles) {
 				System.out.println("Archivo seleccionado: " + file.getAbsolutePath());
 				textosBD.add(fileToString(file));
+				BD.add(file);
 				numArchivosSubidos++;
 				nombreArchivosSubidos += " | " + file.getName();
 			}
