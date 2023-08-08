@@ -62,13 +62,21 @@ public class TestGUI extends JFrame {
 		label_resultados_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_resultados_1.setBounds(320, 11, 120, 20);
 
+		JPanel panel_aux = new JPanel();
+
+		JScrollPane scrollPane_textos_3 = new JScrollPane(panel_aux); // Creando un scrollPane para nuestro
+																				// textArea (textos grandes)
+		scrollPane_textos_3.setBounds(10, 50, 749, 462);
+		
 		JLabel label_resultados_2 = new JLabel("Aqui se mostraran los resultados");
 		label_resultados_2.setBounds(10, 50, 749, 462);
 		label_resultados_2.setHorizontalAlignment(SwingConstants.CENTER);
 
 		// añadiendo elementos al panel de resultados
 		panel_resultados.add(label_resultados_1);
-		panel_resultados.add(label_resultados_2);
+		panel_resultados.add(scrollPane_textos_3);
+		panel_aux.add(label_resultados_2);
+		// panel_resultados.add(label_resultados_2);
 
 		// panel de textos, aca se introducira los diversos textos que seran comparados
 		// con el texto a introducir en panel_comparar
