@@ -1,6 +1,7 @@
 package Detectordeplagio;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -70,6 +71,7 @@ public class TestGUI extends JFrame {
 		scrollPane_textos_3.setBounds(10, 50, 749, 462);
 		
 		JLabel label_resultados_2 = new JLabel("Aqui se mostraran los resultados");
+		label_resultados_2.setFont(new Font("Arial", Font.BOLD, 16));
 		label_resultados_2.setBounds(10, 50, 749, 462);
 		label_resultados_2.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -122,6 +124,7 @@ public class TestGUI extends JFrame {
 		textArea_textos_2.setEditable(false);
 		textArea_textos_2.setLineWrap(true);
 		textArea_textos_2.setWrapStyleWord(true);
+		textArea_textos_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		JScrollPane scrollPane_textos_2 = new JScrollPane(textArea_textos_2); // Creando un scrollPane para nuestro
 																				// textArea (textos grandes)
 		scrollPane_textos_2.setBounds(10, 80, 749, 420);
@@ -145,6 +148,7 @@ public class TestGUI extends JFrame {
 		label_comparar_1.setBounds(320, 11, 120, 20);
 
 		textArea_comparar_1 = new JTextArea();
+		textArea_comparar_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		textArea_comparar_1.setLineWrap(true);
 		textArea_comparar_1.setWrapStyleWord(true);
 		JScrollPane scrollPane_comparar_1 = new JScrollPane(textArea_comparar_1); // Creando un scrollPane para nuestro
