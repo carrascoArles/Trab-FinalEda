@@ -28,6 +28,7 @@ public class TestGUI extends JFrame {
 	List<String> textosBD = new ArrayList<>();
 	Detector detector = new Detector();
 	String textoAComparar;
+	JTextArea textArea_comparar_1;
 	JTextArea textArea_textos_2;
 
 	public static void main(String[] args) {
@@ -80,6 +81,8 @@ public class TestGUI extends JFrame {
 		label_textos_1.setBounds(320, 11, 120, 20);
 
 		JTextArea textArea_textos_1 = new JTextArea();
+		textArea_textos_1.setLineWrap(true);
+		textArea_textos_1.setWrapStyleWord(true);
 		JScrollPane scrollPane_textos_1 = new JScrollPane(textArea_textos_1); // Creando un scrollPane para nuestro
 																				// textArea (textos grandes)
 		scrollPane_textos_1.setBounds(10, 40, 749, 312);
@@ -108,10 +111,11 @@ public class TestGUI extends JFrame {
 
 		textArea_textos_2 = new JTextArea("Aqui se mostraran los archivos subidos");
 		textArea_textos_2.setEditable(false);
+		textArea_textos_2.setLineWrap(true);
+		textArea_textos_2.setWrapStyleWord(true);
 		JScrollPane scrollPane_textos_2 = new JScrollPane(textArea_textos_2); // Creando un scrollPane para nuestro
 																				// textArea (textos grandes)
 		scrollPane_textos_2.setBounds(10, 454, 749, 70);
-
 
 		// añadiendo elementos al panel de textos
 		panel_textos.add(label_textos_1);
@@ -131,7 +135,9 @@ public class TestGUI extends JFrame {
 		label_comparar_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_comparar_1.setBounds(320, 11, 120, 20);
 
-		JTextArea textArea_comparar_1 = new JTextArea();
+		textArea_comparar_1 = new JTextArea();
+		textArea_comparar_1.setLineWrap(true);
+		textArea_comparar_1.setWrapStyleWord(true);
 		JScrollPane scrollPane_comparar_1 = new JScrollPane(textArea_comparar_1); // Creando un scrollPane para nuestro
 																					// textArea (textos grandes)
 		scrollPane_comparar_1.setBounds(10, 40, 749, 312);
@@ -209,6 +215,7 @@ public class TestGUI extends JFrame {
 			File selectedFile = fileChooser.getSelectedFile();
 			System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
 			textoAComparar = fileToString(selectedFile);
+			textArea_comparar_1.setText(textoAComparar);
 		}
 	}
 
