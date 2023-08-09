@@ -160,7 +160,7 @@ public class TestGUI extends JFrame {
 		boton_comparar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textoAComparar = textArea_comparar_1.getText(); // actualizamos el texto a comparar
-				textArea_comparar_1.setText(""); // vaciamos el textArea
+				// textArea_comparar_1.setText(""); // vaciamos el textArea
 				System.out.println("Texto actual a comparar: " + textoAComparar);
 			}
 		});
@@ -235,6 +235,7 @@ public class TestGUI extends JFrame {
 	private void loadFilesBD() {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setMultiSelectionEnabled(true);
+		BD.clear();
 
 		int result = fileChooser.showOpenDialog(null);
 		if (result == JFileChooser.APPROVE_OPTION) {
